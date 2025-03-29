@@ -39,13 +39,15 @@ struct ContentView: View {
                                     "Fabulous? That's You!",
                                     "Just like a real Programmer!",
                                     "This is a very long message, it should flow to 3 lines!"]
+               
+                message = messageArray[Int.random(in: 0..<messageArray.count)]
+                imageName = "image\(Int.random(in: 0...9))"
+                //imageName = "image\(imageNumber)"
+               
                 
-                imageName = "image\(imageNumber)"
-                imageNumber = (imageNumber == 9 ? 0 : imageNumber + 1)
+                //message = messageArray[messageNumber]
                 
-                message = messageArray[messageNumber]
-                
-                messageNumber = (messageNumber == messageArray.count - 1 ? 0 : messageNumber + 1)
+                //messageNumber = (messageNumber == messageArray.count - 1 ? 0 : messageNumber + 1)
                 //print (messageNumber)
                 
             }
