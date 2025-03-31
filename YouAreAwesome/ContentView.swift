@@ -10,9 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
-    @State private var imageNumber = 0
+    @State private var imageNumber = 1
+    @State private var lastMessageNumber = 1
+    @State private var lastImageNumber = 1
     
-    @State private var messageNumber = 0
+    @State private var messageNumber = 1
     var body: some View {
         
         VStack {
@@ -39,17 +41,18 @@ struct ContentView: View {
                                     "Fabulous? That's You!",
                                     "Just like a real Programmer!",
                                     "This is a very long message, it should flow to 3 lines!"]
-               
-                message = messageArray[Int.random(in: 0..<messageArray.count)]
-                imageName = "image\(Int.random(in: 0...9))"
-                //imageName = "image\(imageNumber)"
-               
-                
-                //message = messageArray[messageNumber]
-                
-                //messageNumber = (messageNumber == messageArray.count - 1 ? 0 : messageNumber + 1)
-                //print (messageNumber)
-                
+                while lastImageNumber == imageNumber {
+                    imageNumber = Int.random(in: 0...9)
+                    
+                    imageName = "image\(imageNumber)"
+                    
+                }
+                lastImageNumber = imageNumber
+                while lastMessageNumber == messageNumber {
+                    messageNumber = Int.random(in: 0..<messageArray.count)
+                    message = messageArray[messageNumber]
+                }
+                lastMessageNumber = messageNumber
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
